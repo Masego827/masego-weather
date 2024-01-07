@@ -13,6 +13,9 @@ function refreshWeather(response) {
   let timeElement = document.querySelector("#time");
   let date = new Date(response.data.time * 1000);
   timeElement.innerHTML =formatDate(date);
+
+  let iconElement = document.querySelector("#weather-icon");
+  iconElement.innerHTML=`<img src="${response.data.condition.icon_url}"class="icon" />`;
 }
 
 function formatDate (date){
@@ -23,7 +26,7 @@ function formatDate (date){
     let day = days [date.getDay()];
      
     if (minutes < 10) {
-        minutes = `0 ${minutes}`;
+        minutes = `0${minutes}`;
     }
 
     return `${day} ${hours}:${minutes}`;
